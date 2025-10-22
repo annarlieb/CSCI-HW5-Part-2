@@ -58,13 +58,10 @@ public class VendingMachineInventory {
                 numcosts[i][INV_AMT] = Integer.parseInt(line[INV_AMT]); 
                 numcosts[i][INV_COST] = Integer.parseInt(line[INV_COST]); 
             }
-
-
         }
         catch (FileNotFoundException e){
             System.out.println("Error: File not found");
         }
-
     }
 
     /**
@@ -75,7 +72,8 @@ public class VendingMachineInventory {
         for (int i = 0; i < itemNames.length; i ++){
             toReturn += numcosts[i][0]; 
             toReturn += " " + itemNames[i] + ", "; 
-            toReturn += numcosts[i][1] + " cents each\n"; 
+            toReturn += numcosts[i][1] + " cents each"; 
+            if (i < itemNames.length - 1) toReturn += "\n"; 
         }
         return toReturn; 
     }
