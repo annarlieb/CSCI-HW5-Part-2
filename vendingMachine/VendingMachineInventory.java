@@ -65,7 +65,55 @@ public class VendingMachineInventory {
     }
 
     /**
-     * toString that returns how many of each item is available and the cost of each. 
+     * Returns boolean representing if machine is empty
+     * @return true if no items are for sale, false if items are for sale
+     */
+    public boolean isEmpty(){
+        for (int i = 0; i < itemNames.length; i++){
+            if (numcosts[i][INV_AMT] > 0){
+                return false; 
+            }
+        }
+        // exited for loop meaning there were no items in which the amount was > 0
+        return true; 
+    }
+
+    /**
+     * Attemts to vend a specified item. Updates amount if successful. 
+     * @param itemNum the int representing the item number
+     * @return boolean representing sucessful (true) or insuccessful (false) vending
+     */
+    public boolean vendItem(int itemNum){
+
+        // cannot vend if no items of that type exist or no more available
+        if (itemNum > itemNames.length){
+            System.out.println("CANNOT VEND");
+            return false; 
+        }
+        if (numcosts[itemNum][INV_AMT] < 1){
+            System.out.println("CANNOT VEND");
+            return false; 
+        }
+
+        // can successfully vend so update amount
+        numcosts[itemNum][INV_AMT]--; 
+        System.out.println(itemNames[itemNum] + "(item num " + itemNum + ") was successfully vended");
+        return true; 
+    }
+
+    /**
+     * returns cost of an item     
+     * @param itemNum the int representing the item number
+     * @return int representing the price of the item in cents
+     */
+    public int getCostItem(int itemNum){
+        return numcosts[itemNum][INV_COST]; 
+    }
+
+
+
+    /**
+     * toString that returns string with how many of each item is available and the cost of each. 
      */
     public String toString(){
         String toReturn = "";
