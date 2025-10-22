@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
 
 /*
  * Class representing the coin mechanics of a vending machine,
@@ -27,6 +29,25 @@ public class VendingMachineCoinbox {
         changeSet = new int[6];
         for (int i = 0; i < changeSet.length; i++) {
             changeSet[i] = 10;
+        }
+    }
+
+    /**
+     * Constructor that takes a filename. 
+     * Fills changeSet with appropriate values from the file
+     */
+    public VendingMachineCoinbox(String filename){
+        scanner = new Scanner(System.in);
+        File coinbox = new File(filename); 
+        try{ // need to try otherwise get unhandled file not found exception
+            Scanner coinboxScanner = new Scanner(coinbox); 
+            String[] line = coinboxScanner.nextLine().split(","); 
+            for (int i = 0; i < line.length; i++){
+                changeSet[i] = Integer.parseInt(line[i]); 
+            }
+        }
+        catch (FileNotFoundException e){
+            System.out.println("Error: File not found");
         }
     }
 
@@ -88,4 +109,6 @@ public class VendingMachineCoinbox {
 
         return changeToDispense;
     }
+
+    
 }
