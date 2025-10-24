@@ -110,6 +110,20 @@ public class VendingMachineCoinbox {
         return changeToDispense;
     }
 
+    /**
+     * Prints the current inventory in changeSet to the console
+     * (note: this is public instead of private as stated in directions 
+     * since syntax error when private)
+     */
+    public void finalize(){
+        String toPrint = ""; 
+        for (int i = 0; i < changeSet.length; i++){
+            toPrint+=changeSet[i];
+            if (i<changeSet.length-1) toPrint += ","; // add comma unless after last value
+        }
+        System.out.println(toPrint);
+    }
+
     
 
     

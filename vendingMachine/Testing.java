@@ -11,21 +11,24 @@ import java.util.Arrays;
 public class Testing {
 
     public static void main(String[] args) {
-        // testingPart1(); 
+        testingPart1(); 
         testingPart2(); 
 
     }
 
     public static void testingPart1(){
+        System.out.println("** Part 1 Tests **");
         /* Inventory test */
         VendingMachineInventory vmi = new VendingMachineInventory(); 
         System.out.println(vmi.toString());
         /* Coinbox tests */
         VendingMachineCoinbox vmc = new VendingMachineCoinbox(); 
         System.out.println("Amount in Machine: " + vmc.changeValue());
-        // System.out.println("Coins in Machine: " + Arrays.toString(vmc.changeSet)); // commented out since private
+        System.out.print("Coins in Machine: ");
+        vmc.finalize(); 
         System.out.println("Dispensing 96 cents: " + Arrays.toString(vmc.dispenseChange(96)));
-        // System.out.println("Coins in Machine: " + Arrays.toString(vmc.changeSet)); // commented out since private
+        System.out.print("Coins in Machine: ");
+        vmc.finalize(); 
         System.out.println("Amount in Machine: " + vmc.changeValue());
         vmc.acceptCoin('H');
         System.out.println("Amount in machine after vmc.acceptCoin('H'): " + vmc.changeValue());
@@ -34,6 +37,7 @@ public class Testing {
     }
 
     public static void testingPart2(){
+        System.out.println("** Part 2 Tests **");
         VendingMachineInventory vmi = new VendingMachineInventory("inventory.csv"); 
         System.out.println(vmi.toString());
     }
