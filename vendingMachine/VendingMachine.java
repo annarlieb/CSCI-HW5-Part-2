@@ -81,9 +81,14 @@ public class VendingMachine {
         System.out.println("Enter the item number for the item you'd like to vend: ");
         Scanner in = new Scanner(System.in);
         int itemNum = in.nextInt(); 
-
-        if (vmInventory.getCostItem(itemNum) > userChange){
-            System.out.println("You did not put in enough money to vend this item.");
+        try{
+            if (vmInventory.getCostItem(itemNum) > userChange){
+                System.out.println("You did not put in enough money to vend this item.");
+                return userChange; 
+            }
+        }
+        catch (Exception e){ 
+            System.out.println("Invalid item number");
             return userChange; 
         }
         boolean vended = vmInventory.vendItem(itemNum); 
