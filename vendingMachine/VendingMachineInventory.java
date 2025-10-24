@@ -86,7 +86,7 @@ public class VendingMachineInventory {
     public boolean vendItem(int itemNum){
 
         // cannot vend if no items of that type exist or no more available
-        if (itemNum > itemNames.length){
+        if (itemNum >= itemNames.length){
             System.out.println("CANNOT VEND");
             return false; 
         }
@@ -97,7 +97,7 @@ public class VendingMachineInventory {
 
         // can successfully vend so update amount
         numcosts[itemNum][INV_AMT]--; 
-        System.out.println(itemNames[itemNum] + "(item num " + itemNum + ") was successfully vended");
+        System.out.println(itemNames[itemNum] + " (item num " + itemNum + ") was successfully vended");
         return true; 
     }
 
